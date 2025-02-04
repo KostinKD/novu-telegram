@@ -5,7 +5,6 @@ import { addBreadcrumb } from '@sentry/node';
 
 import {
   MessageRepository,
-  NotificationStepEntity,
   SubscriberRepository,
   EnvironmentRepository,
   IntegrationEntity,
@@ -19,7 +18,6 @@ import {
   ExecutionDetailsStatusEnum,
   IAttachmentOptions,
   IEmailOptions,
-  LogCodeEnum,
   FeatureFlagsKeysEnum,
 } from '@novu/shared';
 import {
