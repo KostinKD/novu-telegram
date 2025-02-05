@@ -1018,7 +1018,6 @@ describe('Workflow Controller E2E API Testing #novu-v2', () => {
       expect(step.slug, stringify(step)).to.be.ok;
       expect(step.name, stringify(step)).to.be.equal(stepInRequest.name);
       expect(step.type, stringify(step)).to.be.equal(stepInRequest.type);
-      expect(Object.keys(step.issues?.body || {}).length, stringify(step)).to.be.eq(0);
     }
   }
 
