@@ -6,7 +6,7 @@ import { PlanActionButton } from './plan-action-button';
 
 interface PlansRowProps {
   selectedBillingInterval: 'month' | 'year';
-  currentPlan?: 'free' | 'business' | 'enterprise';
+  currentPlan?: 'free' | 'pro' | 'team' | 'enterprise';
   trial?: {
     isActive: boolean;
   };
@@ -31,7 +31,8 @@ function PlanDisplay({ price, subtitle, events }: PlanDisplayProps) {
 }
 
 export function PlansRow({ selectedBillingInterval, currentPlan, trial }: PlansRowProps) {
-  const businessPlanPrice = selectedBillingInterval === 'year' ? '$2,700' : '$250';
+  const proPlanPrice = selectedBillingInterval === 'year' ? '$330' : '$30';
+  const teamPlanPrice = selectedBillingInterval === 'year' ? '$2,700' : '$250';
   const effectiveCurrentPlan = trial?.isActive ? 'free' : currentPlan;
 
   return (
@@ -50,7 +51,7 @@ export function PlansRow({ selectedBillingInterval, currentPlan, trial }: PlansR
                 </Badge>
               )}
             </div>
-            <PlanDisplay price="$0" subtitle="free forever" events="30,000 events per month" />
+            <PlanDisplay price="$0" subtitle="free forever" events="10,000 events per month" />
             <ul className="space-y-2">
               <li className="flex items-center gap-2 text-sm">
                 <Check className="text-primary h-4 w-4" />
@@ -68,23 +69,64 @@ export function PlansRow({ selectedBillingInterval, currentPlan, trial }: PlansR
           </div>
         </div>
       </Card>
-
-      {/* Business Plan */}
+      {/* Pro Plan */}
       <Card
-        className={`relative overflow-hidden border transition-colors ${currentPlan === 'business' && !trial?.isActive ? 'border-primary border-2 shadow-md' : 'hover:border-primary/50'}`}
+        className={`relative overflow-hidden border transition-colors ${currentPlan === 'pro' && !trial?.isActive ? 'border-primary border-2 shadow-md' : 'hover:border-primary/50'}`}
       >
         <div className="flex h-full flex-col p-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-xl font-semibold">Business</h3>
-              {effectiveCurrentPlan === 'business' && (
+              <h3 className="text-xl font-semibold">Pro</h3>
+              {effectiveCurrentPlan === 'pro' && (
                 <Badge variant="light" color="gray" size="sm">
                   Current Plan
                 </Badge>
               )}
             </div>
             <PlanDisplay
-              price={businessPlanPrice}
+              price={proPlanPrice}
+              subtitle={`billed ${selectedBillingInterval === 'year' ? 'annually' : 'monthly'}`}
+              events="30,000 events per month"
+            />
+            <ul className="space-y-2">
+              <li className="flex items-center gap-2 text-sm">
+                <Check className="text-primary h-4 w-4" />
+                <span>Everything in Free</span>
+              </li>
+              <li className="flex items-center gap-2 text-sm">
+                <Check className="text-primary h-4 w-4" />
+                <span>3 team members</span>
+              </li>
+              <li className="flex items-center gap-2 text-sm">
+                <Check className="text-primary h-4 w-4" />
+                <span>Remove Novu Branding</span>
+              </li>
+            </ul>
+          </div>
+          <div className="mt-6">
+            {effectiveCurrentPlan !== 'enterprise' && (
+              <PlanActionButton selectedBillingInterval={selectedBillingInterval} mode="filled" className="w-full" />
+            )}
+          </div>
+        </div>
+      </Card>
+
+      {/* Team Plan */}
+      <Card
+        className={`relative overflow-hidden border transition-colors ${currentPlan === 'team' && !trial?.isActive ? 'border-primary border-2 shadow-md' : 'hover:border-primary/50'}`}
+      >
+        <div className="flex h-full flex-col p-6">
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-xl font-semibold">Business</h3>
+              {effectiveCurrentPlan === 'team' && (
+                <Badge variant="light" color="gray" size="sm">
+                  Current Plan
+                </Badge>
+              )}
+            </div>
+            <PlanDisplay
+              price={teamPlanPrice}
               subtitle={`billed ${selectedBillingInterval === 'year' ? 'annually' : 'monthly'}`}
               events="250,000 events per month"
             />

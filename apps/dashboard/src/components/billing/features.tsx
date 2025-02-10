@@ -4,7 +4,8 @@ import { cn } from '../../utils/ui';
 
 enum SupportedPlansEnum {
   FREE = ApiServiceLevelEnum.FREE,
-  BUSINESS = ApiServiceLevelEnum.BUSINESS,
+  PRO = ApiServiceLevelEnum.PRO,
+  TEAM = ApiServiceLevelEnum.TEAM,
   ENTERPRISE = ApiServiceLevelEnum.ENTERPRISE,
 }
 
@@ -17,7 +18,8 @@ type Feature = {
   isTitle?: boolean;
   values: {
     [SupportedPlansEnum.FREE]: FeatureValue;
-    [SupportedPlansEnum.BUSINESS]: FeatureValue;
+    [SupportedPlansEnum.PRO]: FeatureValue;
+    [SupportedPlansEnum.TEAM]: FeatureValue;
     [SupportedPlansEnum.ENTERPRISE]: FeatureValue;
   };
 };
@@ -28,15 +30,17 @@ const features: Feature[] = [
     isTitle: true,
     values: {
       [SupportedPlansEnum.FREE]: { value: '' },
-      [SupportedPlansEnum.BUSINESS]: { value: '' },
+      [SupportedPlansEnum.PRO]: { value: '' },
+      [SupportedPlansEnum.TEAM]: { value: '' },
       [SupportedPlansEnum.ENTERPRISE]: { value: '' },
     },
   },
   {
     label: 'Monthly events',
     values: {
-      [SupportedPlansEnum.FREE]: { value: 'Up to 30,000' },
-      [SupportedPlansEnum.BUSINESS]: { value: 'Up to 250,000' },
+      [SupportedPlansEnum.FREE]: { value: 'Up to 10,000' },
+      [SupportedPlansEnum.PRO]: { value: 'Up to 30,000' },
+      [SupportedPlansEnum.TEAM]: { value: 'Up to 250,000' },
       [SupportedPlansEnum.ENTERPRISE]: { value: '5,000,000' },
     },
   },
@@ -44,7 +48,8 @@ const features: Feature[] = [
     label: 'Additional Events',
     values: {
       [SupportedPlansEnum.FREE]: { value: '-' },
-      [SupportedPlansEnum.BUSINESS]: { value: '$0.0012 per event' },
+      [SupportedPlansEnum.PRO]: { value: '$1.2 per 1000 events' },
+      [SupportedPlansEnum.TEAM]: { value: '$1.2 per 1000 events' },
       [SupportedPlansEnum.ENTERPRISE]: { value: 'Custom' },
     },
   },
@@ -52,7 +57,8 @@ const features: Feature[] = [
     label: 'Email, InApp, SMS, Chat, Push Channels',
     values: {
       [SupportedPlansEnum.FREE]: { value: <Check className="h-4 w-4" /> },
-      [SupportedPlansEnum.BUSINESS]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.PRO]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.TEAM]: { value: <Check className="h-4 w-4" /> },
       [SupportedPlansEnum.ENTERPRISE]: { value: <Check className="h-4 w-4" /> },
     },
   },
@@ -60,7 +66,8 @@ const features: Feature[] = [
     label: 'Notification subscribers',
     values: {
       [SupportedPlansEnum.FREE]: { value: 'Unlimited' },
-      [SupportedPlansEnum.BUSINESS]: { value: 'Unlimited' },
+      [SupportedPlansEnum.PRO]: { value: 'Unlimited' },
+      [SupportedPlansEnum.TEAM]: { value: 'Unlimited' },
       [SupportedPlansEnum.ENTERPRISE]: { value: 'Unlimited' },
     },
   },
@@ -68,7 +75,8 @@ const features: Feature[] = [
     label: 'Environments',
     values: {
       [SupportedPlansEnum.FREE]: { value: '2' },
-      [SupportedPlansEnum.BUSINESS]: { value: '10' },
+      [SupportedPlansEnum.PRO]: { value: '2' },
+      [SupportedPlansEnum.TEAM]: { value: '10' },
       [SupportedPlansEnum.ENTERPRISE]: { value: 'Unlimited' },
     },
   },
@@ -77,15 +85,17 @@ const features: Feature[] = [
     isTitle: true,
     values: {
       [SupportedPlansEnum.FREE]: { value: '' },
-      [SupportedPlansEnum.BUSINESS]: { value: '' },
+      [SupportedPlansEnum.PRO]: { value: '' },
+      [SupportedPlansEnum.TEAM]: { value: '' },
       [SupportedPlansEnum.ENTERPRISE]: { value: '' },
     },
   },
   {
     label: 'Total workflows',
     values: {
-      [SupportedPlansEnum.FREE]: { value: 'Unlimited' },
-      [SupportedPlansEnum.BUSINESS]: { value: 'Unlimited' },
+      [SupportedPlansEnum.FREE]: { value: '20' },
+      [SupportedPlansEnum.PRO]: { value: 'Unlimited' },
+      [SupportedPlansEnum.TEAM]: { value: 'Unlimited' },
       [SupportedPlansEnum.ENTERPRISE]: { value: 'Unlimited' },
     },
   },
@@ -93,15 +103,17 @@ const features: Feature[] = [
     label: 'Provider integrations',
     values: {
       [SupportedPlansEnum.FREE]: { value: 'Unlimited' },
-      [SupportedPlansEnum.BUSINESS]: { value: 'Unlimited' },
+      [SupportedPlansEnum.PRO]: { value: 'Unlimited' },
+      [SupportedPlansEnum.TEAM]: { value: 'Unlimited' },
       [SupportedPlansEnum.ENTERPRISE]: { value: 'Unlimited' },
     },
   },
   {
     label: 'Activity Feed retention',
     values: {
-      [SupportedPlansEnum.FREE]: { value: '30 days' },
-      [SupportedPlansEnum.BUSINESS]: { value: '90 days' },
+      [SupportedPlansEnum.FREE]: { value: '24 Hours' },
+      [SupportedPlansEnum.PRO]: { value: '7 days' },
+      [SupportedPlansEnum.TEAM]: { value: '90 days' },
       [SupportedPlansEnum.ENTERPRISE]: { value: 'Unlimited' },
     },
   },
@@ -109,7 +121,8 @@ const features: Feature[] = [
     label: 'Digests',
     values: {
       [SupportedPlansEnum.FREE]: { value: <Check className="h-4 w-4" /> },
-      [SupportedPlansEnum.BUSINESS]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.PRO]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.TEAM]: { value: <Check className="h-4 w-4" /> },
       [SupportedPlansEnum.ENTERPRISE]: { value: <Check className="h-4 w-4" /> },
     },
   },
@@ -117,7 +130,8 @@ const features: Feature[] = [
     label: 'Step controls',
     values: {
       [SupportedPlansEnum.FREE]: { value: <Check className="h-4 w-4" /> },
-      [SupportedPlansEnum.BUSINESS]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.PRO]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.TEAM]: { value: <Check className="h-4 w-4" /> },
       [SupportedPlansEnum.ENTERPRISE]: { value: <Check className="h-4 w-4" /> },
     },
   },
@@ -126,7 +140,8 @@ const features: Feature[] = [
     isTitle: true,
     values: {
       [SupportedPlansEnum.FREE]: { value: '' },
-      [SupportedPlansEnum.BUSINESS]: { value: '' },
+      [SupportedPlansEnum.PRO]: { value: '' },
+      [SupportedPlansEnum.TEAM]: { value: '' },
       [SupportedPlansEnum.ENTERPRISE]: { value: '' },
     },
   },
@@ -134,7 +149,8 @@ const features: Feature[] = [
     label: 'Inbox component',
     values: {
       [SupportedPlansEnum.FREE]: { value: <Check className="h-4 w-4" /> },
-      [SupportedPlansEnum.BUSINESS]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.PRO]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.TEAM]: { value: <Check className="h-4 w-4" /> },
       [SupportedPlansEnum.ENTERPRISE]: { value: <Check className="h-4 w-4" /> },
     },
   },
@@ -142,7 +158,8 @@ const features: Feature[] = [
     label: 'User preferences component',
     values: {
       [SupportedPlansEnum.FREE]: { value: <Check className="h-4 w-4" /> },
-      [SupportedPlansEnum.BUSINESS]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.PRO]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.TEAM]: { value: <Check className="h-4 w-4" /> },
       [SupportedPlansEnum.ENTERPRISE]: { value: <Check className="h-4 w-4" /> },
     },
   },
@@ -150,7 +167,8 @@ const features: Feature[] = [
     label: 'Remove Novu branding',
     values: {
       [SupportedPlansEnum.FREE]: { value: '-' },
-      [SupportedPlansEnum.BUSINESS]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.PRO]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.TEAM]: { value: <Check className="h-4 w-4" /> },
       [SupportedPlansEnum.ENTERPRISE]: { value: <Check className="h-4 w-4" /> },
     },
   },
@@ -159,7 +177,8 @@ const features: Feature[] = [
     isTitle: true,
     values: {
       [SupportedPlansEnum.FREE]: { value: '' },
-      [SupportedPlansEnum.BUSINESS]: { value: '' },
+      [SupportedPlansEnum.PRO]: { value: '' },
+      [SupportedPlansEnum.TEAM]: { value: '' },
       [SupportedPlansEnum.ENTERPRISE]: { value: '' },
     },
   },
@@ -167,7 +186,8 @@ const features: Feature[] = [
     label: 'Team members',
     values: {
       [SupportedPlansEnum.FREE]: { value: '3' },
-      [SupportedPlansEnum.BUSINESS]: { value: 'Unlimited' },
+      [SupportedPlansEnum.PRO]: { value: '3' },
+      [SupportedPlansEnum.TEAM]: { value: 'Unlimited' },
       [SupportedPlansEnum.ENTERPRISE]: { value: 'Unlimited' },
     },
   },
@@ -175,7 +195,8 @@ const features: Feature[] = [
     label: 'RBAC',
     values: {
       [SupportedPlansEnum.FREE]: { value: '-' },
-      [SupportedPlansEnum.BUSINESS]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.PRO]: { value: '-' },
+      [SupportedPlansEnum.TEAM]: { value: <Check className="h-4 w-4" /> },
       [SupportedPlansEnum.ENTERPRISE]: { value: <Check className="h-4 w-4" /> },
     },
   },
@@ -183,7 +204,8 @@ const features: Feature[] = [
     label: 'GDPR compliance',
     values: {
       [SupportedPlansEnum.FREE]: { value: <Check className="h-4 w-4" /> },
-      [SupportedPlansEnum.BUSINESS]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.PRO]: { value: <Check className="h-4 w-4" /> },
+      [SupportedPlansEnum.TEAM]: { value: <Check className="h-4 w-4" /> },
       [SupportedPlansEnum.ENTERPRISE]: { value: <Check className="h-4 w-4" /> },
     },
   },
@@ -191,7 +213,8 @@ const features: Feature[] = [
     label: 'SAML SSO and Enterprise SSO providers',
     values: {
       [SupportedPlansEnum.FREE]: { value: '-' },
-      [SupportedPlansEnum.BUSINESS]: { value: '-' },
+      [SupportedPlansEnum.PRO]: { value: '-' },
+      [SupportedPlansEnum.TEAM]: { value: '-' },
       [SupportedPlansEnum.ENTERPRISE]: { value: <Check className="h-4 w-4" /> },
     },
   },
@@ -200,7 +223,8 @@ const features: Feature[] = [
     isTitle: true,
     values: {
       [SupportedPlansEnum.FREE]: { value: '' },
-      [SupportedPlansEnum.BUSINESS]: { value: '' },
+      [SupportedPlansEnum.PRO]: { value: '' },
+      [SupportedPlansEnum.TEAM]: { value: '' },
       [SupportedPlansEnum.ENTERPRISE]: { value: '' },
     },
   },
@@ -208,7 +232,8 @@ const features: Feature[] = [
     label: 'Support SLA',
     values: {
       [SupportedPlansEnum.FREE]: { value: '-' },
-      [SupportedPlansEnum.BUSINESS]: { value: '48 hours' },
+      [SupportedPlansEnum.PRO]: { value: '-' },
+      [SupportedPlansEnum.TEAM]: { value: '48 hours' },
       [SupportedPlansEnum.ENTERPRISE]: { value: '24 hours' },
     },
   },
@@ -216,7 +241,8 @@ const features: Feature[] = [
     label: 'Support channels',
     values: {
       [SupportedPlansEnum.FREE]: { value: 'Community & Discord' },
-      [SupportedPlansEnum.BUSINESS]: { value: 'Slack & Email' },
+      [SupportedPlansEnum.PRO]: { value: 'Community & Discord' },
+      [SupportedPlansEnum.TEAM]: { value: 'Slack & Email' },
       [SupportedPlansEnum.ENTERPRISE]: { value: 'Dedicated' },
     },
   },
@@ -225,7 +251,8 @@ const features: Feature[] = [
     isTitle: true,
     values: {
       [SupportedPlansEnum.FREE]: { value: '' },
-      [SupportedPlansEnum.BUSINESS]: { value: '' },
+      [SupportedPlansEnum.PRO]: { value: '' },
+      [SupportedPlansEnum.TEAM]: { value: '' },
       [SupportedPlansEnum.ENTERPRISE]: { value: '' },
     },
   },
@@ -233,7 +260,8 @@ const features: Feature[] = [
     label: 'Payment method',
     values: {
       [SupportedPlansEnum.FREE]: { value: '-' },
-      [SupportedPlansEnum.BUSINESS]: { value: 'Credit card only' },
+      [SupportedPlansEnum.PRO]: { value: 'Credit card only' },
+      [SupportedPlansEnum.TEAM]: { value: 'Credit card only' },
       [SupportedPlansEnum.ENTERPRISE]: { value: 'Credit card & PO and Invoicing' },
     },
   },
@@ -241,7 +269,8 @@ const features: Feature[] = [
     label: 'Terms of service',
     values: {
       [SupportedPlansEnum.FREE]: { value: 'Standard' },
-      [SupportedPlansEnum.BUSINESS]: { value: 'Standard' },
+      [SupportedPlansEnum.PRO]: { value: 'Standard' },
+      [SupportedPlansEnum.TEAM]: { value: 'Standard' },
       [SupportedPlansEnum.ENTERPRISE]: { value: 'Custom' },
     },
   },
@@ -249,7 +278,8 @@ const features: Feature[] = [
     label: 'DPA',
     values: {
       [SupportedPlansEnum.FREE]: { value: 'Standard' },
-      [SupportedPlansEnum.BUSINESS]: { value: 'Standard' },
+      [SupportedPlansEnum.PRO]: { value: 'Standard' },
+      [SupportedPlansEnum.TEAM]: { value: 'Standard' },
       [SupportedPlansEnum.ENTERPRISE]: { value: 'Custom' },
     },
   },
@@ -257,7 +287,8 @@ const features: Feature[] = [
     label: 'Security review',
     values: {
       [SupportedPlansEnum.FREE]: { value: 'SOC 2 and ISO 27001 upon request' },
-      [SupportedPlansEnum.BUSINESS]: { value: 'Custom' },
+      [SupportedPlansEnum.PRO]: { value: 'SOC 2 and ISO 27001 upon request' },
+      [SupportedPlansEnum.TEAM]: { value: 'Custom' },
       [SupportedPlansEnum.ENTERPRISE]: { value: 'Custom' },
     },
   },

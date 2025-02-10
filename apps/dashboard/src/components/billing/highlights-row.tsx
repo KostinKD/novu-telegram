@@ -13,11 +13,16 @@ type PlanHighlights = {
 
 const highlights: PlanHighlights = {
   [ApiServiceLevelEnum.FREE]: [
+    { text: 'Up to 10,000 events per month' },
+    { text: '3 teammates' },
+    { text: '24 hours Activity Feed retention' },
+  ],
+  [ApiServiceLevelEnum.PRO]: [
     { text: 'Up to 30,000 events per month' },
     { text: '3 teammates' },
-    { text: '30 days Activity Feed retention' },
+    { text: '7 days Activity Feed retention' },
   ],
-  [ApiServiceLevelEnum.BUSINESS]: [
+  [ApiServiceLevelEnum.TEAM]: [
     { text: 'Up to 250,000 events per month' },
     { text: 'Unlimited teammates' },
     { text: '90 days Activity Feed retention' },
