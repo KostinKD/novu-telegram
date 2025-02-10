@@ -1,6 +1,6 @@
 import { ApiServiceLevelEnum } from '../types';
 
-enum FeatureNameEnum {
+export enum FeatureNameEnum {
   // Platform Features
   PLATFORM_MONTHLY_COST = 'platformMonthlyCost',
   PLATFORM_ANNUAL_COST = 'platformAnnualCost',
