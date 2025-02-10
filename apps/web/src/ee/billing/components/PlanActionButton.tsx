@@ -19,7 +19,7 @@ export const PlanActionButton = ({ selectedBillingInterval }: { selectedBillingI
     () =>
       api.post(checkoutUrl, {
         billingInterval: selectedBillingInterval,
-        apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+        apiServiceLevel: ApiServiceLevelEnum.TEAM,
       }),
     {
       onSuccess: (data) => {

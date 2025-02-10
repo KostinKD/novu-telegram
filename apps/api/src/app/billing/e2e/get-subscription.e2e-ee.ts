@@ -68,7 +68,7 @@ describe('GetSubscription #novu-v2', async () => {
     findById: () =>
       Promise.resolve({
         _id: session.organization._id,
-        apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+        apiServiceLevel: ApiServiceLevelEnum.TEAM,
       }),
   };
   const getPlatformNotificationUsage = {
@@ -77,7 +77,7 @@ describe('GetSubscription #novu-v2', async () => {
         {
           _id: session.organization._id,
           notificationsCount: 1000000,
-          apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+          apiServiceLevel: ApiServiceLevelEnum.TEAM,
         },
       ]),
   };
@@ -114,7 +114,7 @@ describe('GetSubscription #novu-v2', async () => {
     );
 
     expect(result).to.deep.equal({
-      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+      apiServiceLevel: ApiServiceLevelEnum.TEAM,
       isActive: true,
       status: 'active',
       hasPaymentMethod: true,

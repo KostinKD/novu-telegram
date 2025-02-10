@@ -19,7 +19,7 @@ const verifyCustomerMock = {
   adminUser: {
     _id: 'admin_user_id',
   },
-  organization: { _id: 'organization_id', apiServiceLevel: ApiServiceLevelEnum.BUSINESS },
+  organization: { _id: 'organization_id', apiServiceLevel: ApiServiceLevelEnum.TEAM },
   subscriptions: [
     {
       id: 'subscription_id',
@@ -36,7 +36,7 @@ const verifyCustomerMock = {
               },
               product: {
                 metadata: {
-                  apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                  apiServiceLevel: ApiServiceLevelEnum.TEAM,
                 },
               },
             },
@@ -52,7 +52,7 @@ const verifyCustomerMock = {
               },
               product: {
                 metadata: {
-                  apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                  apiServiceLevel: ApiServiceLevelEnum.TEAM,
                 },
               },
             },
@@ -198,7 +198,7 @@ describe('webhook event - customer.subscription.deleted #novu-v2', () => {
                   },
                   product: {
                     metadata: {
-                      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                      apiServiceLevel: ApiServiceLevelEnum.TEAM,
                     },
                   },
                 },
@@ -263,7 +263,7 @@ describe('webhook event - customer.subscription.deleted #novu-v2', () => {
                   },
                   product: {
                     metadata: {
-                      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                      apiServiceLevel: ApiServiceLevelEnum.TEAM,
                     },
                   },
                 },
@@ -323,7 +323,7 @@ describe('webhook event - customer.subscription.deleted #novu-v2', () => {
                   },
                   product: {
                     metadata: {
-                      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                      apiServiceLevel: ApiServiceLevelEnum.TEAM,
                     },
                   },
                 },
@@ -378,7 +378,7 @@ describe('webhook event - customer.subscription.deleted #novu-v2', () => {
                   },
                   product: {
                     metadata: {
-                      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                      apiServiceLevel: ApiServiceLevelEnum.TEAM,
                     },
                   },
                 },
@@ -402,7 +402,7 @@ describe('webhook event - customer.subscription.deleted #novu-v2', () => {
                   recurring: { usage_type: 'licensed', interval: 'month' },
                   product: {
                     metadata: {
-                      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                      apiServiceLevel: ApiServiceLevelEnum.TEAM,
                     },
                   },
                 },
@@ -422,7 +422,7 @@ describe('webhook event - customer.subscription.deleted #novu-v2', () => {
                   recurring: { usage_type: 'metered', interval: 'month' },
                   product: {
                     metadata: {
-                      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                      apiServiceLevel: ApiServiceLevelEnum.TEAM,
                     },
                   },
                 },
@@ -442,7 +442,7 @@ describe('webhook event - customer.subscription.deleted #novu-v2', () => {
       updateServiceLevelStub.calledWith(
         UpdateServiceLevelCommand.create({
           organizationId: 'organization_id',
-          apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+          apiServiceLevel: ApiServiceLevelEnum.TEAM,
           isTrial: false,
         })
       )
@@ -469,7 +469,7 @@ describe('webhook event - customer.subscription.deleted #novu-v2', () => {
                   },
                   product: {
                     metadata: {
-                      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                      apiServiceLevel: ApiServiceLevelEnum.TEAM,
                     },
                   },
                 },
@@ -482,7 +482,7 @@ describe('webhook event - customer.subscription.deleted #novu-v2', () => {
     };
 
     verifyCustomerStub.resolves({
-      organization: { _id: 'organization_id', apiServiceLevel: ApiServiceLevelEnum.BUSINESS },
+      organization: { _id: 'organization_id', apiServiceLevel: ApiServiceLevelEnum.TEAM },
       customer: { id: 'customer_id', metadata: { organizationId: 'org_id' } },
       adminUser: { _id: 'admin_user_id' },
       subscriptions: [],

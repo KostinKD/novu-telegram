@@ -117,7 +117,7 @@ describe('Resource Limiting #novu-v2', () => {
               success: false,
               start: 1609459200000,
               reset: 1612137600000,
-              apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+              apiServiceLevel: ApiServiceLevelEnum.TEAM,
               locked: true,
             });
             const response = await request(pathEvent);
@@ -147,7 +147,7 @@ describe('Resource Limiting #novu-v2', () => {
               success: false,
               start: 1609459200000,
               reset: 1612137600000,
-              apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+              apiServiceLevel: ApiServiceLevelEnum.TEAM,
               locked: true,
             });
             const response = await request(pathEvent);
@@ -167,7 +167,7 @@ describe('Resource Limiting #novu-v2', () => {
               success: false,
               start: 1609459200000,
               reset: 1612137600000,
-              apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+              apiServiceLevel: ApiServiceLevelEnum.TEAM,
               locked: false,
             });
             const response = await request(pathEvent);

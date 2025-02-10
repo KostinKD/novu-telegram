@@ -1,7 +1,6 @@
 /* eslint-disable global-require */
-import sinon from 'sinon';
 import { expect } from 'chai';
-import { EnvironmentRepository, NotificationRepository, CommunityOrganizationRepository } from '@novu/dal';
+import { CommunityOrganizationRepository, EnvironmentRepository, NotificationRepository } from '@novu/dal';
 import { UserSession } from '@novu/testing';
 import { ApiServiceLevelEnum, isClerkEnabled } from '@novu/shared';
 
@@ -73,14 +72,14 @@ describe('GetPlatformNotificationUsage #novu-v2', () => {
           createdAt: mockNotificationDate,
         })
       );
-      await orgSession.updateOrganizationServiceLevel(ApiServiceLevelEnum.BUSINESS);
+      await orgSession.updateOrganizationServiceLevel(ApiServiceLevelEnum.TEAM);
 
       organizations.push({ id: orgSession.organization._id, notificationsCount });
     }
 
     let expectedResult = organizations.map((org) => ({
       _id: org.id.toString(),
-      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+      apiServiceLevel: ApiServiceLevelEnum.TEAM,
       notificationsCount: org.notificationsCount,
     }));
 
@@ -100,7 +99,7 @@ describe('GetPlatformNotificationUsage #novu-v2', () => {
   });
 
   it(`should return the usage for the given single organization`, async () => {
-    await session.updateOrganizationServiceLevel(ApiServiceLevelEnum.BUSINESS);
+    await session.updateOrganizationServiceLevel(ApiServiceLevelEnum.TEAM);
 
     const useCase = createUseCase();
     const notificationsCount = 110;
@@ -125,7 +124,7 @@ describe('GetPlatformNotificationUsage #novu-v2', () => {
     expect(result).to.deep.equal([
       {
         _id: session.organization._id.toString(),
-        apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+        apiServiceLevel: ApiServiceLevelEnum.TEAM,
         notificationsCount,
       },
     ]);

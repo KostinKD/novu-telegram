@@ -69,7 +69,7 @@ const verifyCustomerMock = {
               },
               product: {
                 metadata: {
-                  apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                  apiServiceLevel: ApiServiceLevelEnum.TEAM,
                 },
               },
             },
@@ -85,7 +85,7 @@ const verifyCustomerMock = {
               },
               product: {
                 metadata: {
-                  apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                  apiServiceLevel: ApiServiceLevelEnum.TEAM,
                 },
               },
             },
@@ -158,7 +158,7 @@ describe('webhook event - checkout.session.completed #novu-v2', () => {
     throw new Error('ee-billing does not exist');
   }
 
-  const { CheckoutSessionCompletedHandler, VerifyCustomer, GetPrices } = eeBilling;
+  const { CheckoutSessionCompletedHandler, VerifyCustomer, GetStripePlanPriceUseCase } = eeBilling;
 
   let verifyCustomerStub: sinon.SinonStub;
   let getPricesStub: sinon.SinonStub;
@@ -171,7 +171,7 @@ describe('webhook event - checkout.session.completed #novu-v2', () => {
 
   beforeEach(() => {
     verifyCustomerStub = sinon.stub(VerifyCustomer.prototype, 'execute').resolves(verifyCustomerMock);
-    getPricesStub = sinon.stub(GetPrices.prototype, 'execute').resolves(getPricesMock);
+    getPricesStub = sinon.stub(GetStripePlanPriceUseCase.prototype, 'execute').resolves(getPricesMock);
   });
 
   afterEach(() => {
@@ -229,7 +229,7 @@ describe('webhook event - checkout.session.completed #novu-v2', () => {
           ...mockCheckoutSessionCompletedEvent.data.object,
           metadata: {
             billingInterval: StripeBillingIntervalEnum.YEAR,
-            apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+            apiServiceLevel: ApiServiceLevelEnum.TEAM,
           },
         },
       },

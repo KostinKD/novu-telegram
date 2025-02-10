@@ -36,7 +36,7 @@ export function PlansRow({ selectedBillingInterval, currentPlan, trial }: PlansR
   const effectiveCurrentPlan = trial?.isActive ? 'free' : currentPlan;
 
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
       {/* Free Plan */}
       <Card
         className={`hover:border-primary/50 relative overflow-hidden border transition-colors ${currentPlan === 'free' && !trial?.isActive ? 'border-primary border-2 shadow-md' : ''}`}
@@ -118,7 +118,7 @@ export function PlansRow({ selectedBillingInterval, currentPlan, trial }: PlansR
         <div className="flex h-full flex-col p-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-xl font-semibold">Business</h3>
+              <h3 className="text-xl font-semibold">Team</h3>
               {effectiveCurrentPlan === 'team' && (
                 <Badge variant="light" color="gray" size="sm">
                   Current Plan
@@ -133,7 +133,7 @@ export function PlansRow({ selectedBillingInterval, currentPlan, trial }: PlansR
             <ul className="space-y-2">
               <li className="flex items-center gap-2 text-sm">
                 <Check className="text-primary h-4 w-4" />
-                <span>Everything in Free</span>
+                <span>Everything in Pro</span>
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <Check className="text-primary h-4 w-4" />

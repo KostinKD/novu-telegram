@@ -22,7 +22,7 @@ const mockCustomerSubscriptionCreatedEvent = {
               },
               product: {
                 metadata: {
-                  apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                  apiServiceLevel: ApiServiceLevelEnum.TEAM,
                 },
               },
             },
@@ -65,7 +65,7 @@ const verifyCustomerMock = {
               },
               product: {
                 metadata: {
-                  apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                  apiServiceLevel: ApiServiceLevelEnum.TEAM,
                 },
               },
             },
@@ -81,7 +81,7 @@ const verifyCustomerMock = {
               },
               product: {
                 metadata: {
-                  apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                  apiServiceLevel: ApiServiceLevelEnum.TEAM,
                 },
               },
             },
@@ -189,7 +189,7 @@ describe('webhook event - customer.subscription.created #novu-v2', () => {
 
     expect(updateServiceLevelStub.lastCall.args.at(0)).to.deep.equal({
       organizationId: 'organization_id',
-      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+      apiServiceLevel: ApiServiceLevelEnum.TEAM,
       isTrial: false,
     });
   });
@@ -218,7 +218,7 @@ describe('webhook event - customer.subscription.created #novu-v2', () => {
                   },
                   product: {
                     metadata: {
-                      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+                      apiServiceLevel: ApiServiceLevelEnum.TEAM,
                     },
                   },
                 },

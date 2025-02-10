@@ -1,4 +1,4 @@
-import { EnvironmentRepository, IntegrationRepository, CommunityOrganizationRepository } from '@novu/dal';
+import { CommunityOrganizationRepository, EnvironmentRepository, IntegrationRepository } from '@novu/dal';
 import { UserSession } from '@novu/testing';
 import { expect } from 'chai';
 import {
@@ -973,7 +973,7 @@ describe('Update Integration - /integrations/:integrationId (PUT) #novu-v2', fun
 
     await communityOrganizationRepository.update(
       { _id: session.organization._id },
-      { $set: { apiServiceLevel: ApiServiceLevelEnum.BUSINESS } }
+      { $set: { apiServiceLevel: ApiServiceLevelEnum.TEAM } }
     );
 
     const inAppIntegration = await integrationRepository.create({

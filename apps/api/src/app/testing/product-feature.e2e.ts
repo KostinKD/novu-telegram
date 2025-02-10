@@ -18,7 +18,7 @@ describe('Product feature Test #novu-v1-os', async () => {
     await organizationRepository.update(
       { _id: session.organization._id },
       {
-        apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+        apiServiceLevel: ApiServiceLevelEnum.TEAM,
       }
     );
     const { body } = await session.testAgent.get(path).set('authorization', `ApiKey ${session.apiKey}`).expect(200);

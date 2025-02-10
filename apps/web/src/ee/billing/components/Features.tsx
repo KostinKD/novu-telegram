@@ -3,7 +3,6 @@ import { Text } from '@novu/novui';
 import styled from '@emotion/styled';
 import { ApiServiceLevelEnum } from '@novu/shared';
 import { IconCheck as _IconCheck } from '@novu/novui/icons';
-import { Badge } from './Badge';
 
 const TitleCell = styled.div`
   display: flex;
@@ -38,7 +37,7 @@ const IconCheck = () => (
 
 enum SupportedPlansEnum {
   FREE = ApiServiceLevelEnum.FREE,
-  BUSINESS = ApiServiceLevelEnum.BUSINESS,
+  BUSINESS = ApiServiceLevelEnum.TEAM,
   ENTERPRISE = ApiServiceLevelEnum.ENTERPRISE,
 }
 

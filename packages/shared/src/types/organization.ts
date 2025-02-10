@@ -1,7 +1,9 @@
 export type OrganizationId = string;
 
 export enum ApiServiceLevelEnum {
+  /** @deprecated Use TEAM instead */
   FREE = 'free',
+  FREE_2025 = 'free_2025',
   PRO = 'pro',
   /** @deprecated Use TEAM instead */
   BUSINESS = 'business',
@@ -15,7 +17,10 @@ export enum ApiServiceLevelEnum {
   UNLIMITED = 'unlimited', // Redirect to enterprise
 }
 
-export function migrateServiceLevel(level: ApiServiceLevelEnum): ApiServiceLevelEnum {
+export function migrateServiceLevel(level?: ApiServiceLevelEnum): ApiServiceLevelEnum {
+  if (!level) {
+    return ApiServiceLevelEnum.FREE;
+  }
   switch (level) {
     case ApiServiceLevelEnum.UNLIMITED:
       return ApiServiceLevelEnum.ENTERPRISE;

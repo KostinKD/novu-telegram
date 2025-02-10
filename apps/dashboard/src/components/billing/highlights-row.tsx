@@ -56,7 +56,7 @@ function PlanHighlights({ planHighlights }: { planHighlights: Highlight[] }) {
 
 export function HighlightsRow() {
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
       {Object.entries(highlights).map(([planName, planHighlights]) => (
         <PlanHighlights key={planName} planHighlights={planHighlights} />
       ))}

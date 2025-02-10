@@ -13,6 +13,11 @@ import {
  * Value units are requests per second.
  */
 export const DEFAULT_API_RATE_LIMIT_SERVICE_MAXIMUM_CONFIG: IApiRateLimitServiceMaximum = {
+  [ApiServiceLevelEnum.FREE_2025]: {
+    [ApiRateLimitCategoryEnum.TRIGGER]: 60,
+    [ApiRateLimitCategoryEnum.CONFIGURATION]: 20,
+    [ApiRateLimitCategoryEnum.GLOBAL]: 30,
+  },
   [ApiServiceLevelEnum.FREE]: {
     [ApiRateLimitCategoryEnum.TRIGGER]: 60,
     [ApiRateLimitCategoryEnum.CONFIGURATION]: 20,

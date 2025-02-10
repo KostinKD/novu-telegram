@@ -4,7 +4,7 @@ import sinon from 'sinon';
 import { Test } from '@nestjs/testing';
 import { CacheService, MockCacheService } from '@novu/application-generic';
 import { ApiServiceLevelEnum, GetSubscriptionDto } from '@novu/shared';
-import { GetEventResourceUsage, GetPlatformNotificationUsage, GetSubscription } from '@novu/ee-billing';
+import { GetEventResourceUsage, GetSubscription } from '@novu/ee-billing';
 import { randomUUID } from 'node:crypto';
 import { AppModule } from '../../../app.module';
 
@@ -16,7 +16,7 @@ describe('GetEventResourceUsage #novu-v2', async () => {
   let getSubscriptionStub: sinon.SinonStub;
 
   const getSubscriptionResponse: GetSubscriptionDto = {
-    apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+    apiServiceLevel: ApiServiceLevelEnum.TEAM,
     isActive: true,
     status: 'trialing',
     hasPaymentMethod: false,
@@ -69,7 +69,7 @@ describe('GetEventResourceUsage #novu-v2', async () => {
         success: true,
         start: 1609459200000,
         reset: 1612137600000,
-        apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+        apiServiceLevel: ApiServiceLevelEnum.TEAM,
         locked: true,
       });
     });
@@ -95,7 +95,7 @@ describe('GetEventResourceUsage #novu-v2', async () => {
         success: false,
         start: 1609459200000,
         reset: 1612137600000,
-        apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+        apiServiceLevel: ApiServiceLevelEnum.TEAM,
         locked: true,
       });
     });

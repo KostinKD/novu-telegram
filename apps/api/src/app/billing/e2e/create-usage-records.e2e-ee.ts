@@ -53,7 +53,7 @@ describe('CreateUsageRecords #novu-v2', () => {
     getPlatformNotificationUsageStub = sinon.stub(getPlatformNotificationUsageUsecase, 'execute').resolves([
       {
         _id: 'organization_id',
-        apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+        apiServiceLevel: ApiServiceLevelEnum.TEAM,
         notificationsCount: 100,
       },
     ] as any);
@@ -246,12 +246,12 @@ describe('CreateUsageRecords #novu-v2', () => {
     getPlatformNotificationUsageStub.resolves([
       {
         _id: 'organization_id_1',
-        apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+        apiServiceLevel: ApiServiceLevelEnum.TEAM,
         notificationsCount: 100,
       },
       {
         _id: 'organization_id_2',
-        apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+        apiServiceLevel: ApiServiceLevelEnum.TEAM,
         notificationsCount: 200,
       },
     ]);

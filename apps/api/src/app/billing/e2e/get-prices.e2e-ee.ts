@@ -11,7 +11,7 @@ describe('GetPrices #novu-v2', () => {
     throw new Error('ee-billing does not exist');
   }
 
-  const { GetPrices, GetPricesCommand } = eeBilling;
+  const { GetStripePlanPriceUseCase, GetPricesCommand } = eeBilling;
 
   const stripeStub = {
     prices: {
@@ -34,7 +34,7 @@ describe('GetPrices #novu-v2', () => {
     listPricesStub.reset();
   });
 
-  const createUseCase = () => new GetPrices(stripeStub as any);
+  const createUseCase = () => new GetStripePlanPriceUseCase(stripeStub as any);
 
   const expectedPrices = [
     {
@@ -46,7 +46,7 @@ describe('GetPrices #novu-v2', () => {
       },
     },
     {
-      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+      apiServiceLevel: ApiServiceLevelEnum.TEAM,
       billingInterval: StripeBillingIntervalEnum.MONTH,
       prices: {
         licensed: ['business_flat_monthly'],
@@ -54,7 +54,7 @@ describe('GetPrices #novu-v2', () => {
       },
     },
     {
-      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+      apiServiceLevel: ApiServiceLevelEnum.TEAM,
       billingInterval: StripeBillingIntervalEnum.YEAR,
       prices: {
         licensed: ['business_flat_annually'],
@@ -116,12 +116,12 @@ describe('GetPrices #novu-v2', () => {
     try {
       await useCase.execute(
         GetPricesCommand.create({
-          apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+          apiServiceLevel: ApiServiceLevelEnum.TEAM,
           billingInterval: StripeBillingIntervalEnum.MONTH,
         })
       );
     } catch (e) {
-      expect(e.message).to.include(`No prices found for apiServiceLevel: '${ApiServiceLevelEnum.BUSINESS}'`);
+      expect(e.message).to.include(`No prices found for apiServiceLevel: '${ApiServiceLevelEnum.TEAM}'`);
     }
   });
 });

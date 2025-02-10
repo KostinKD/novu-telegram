@@ -20,14 +20,14 @@ export function useCheckoutSession() {
       post<CheckoutResponse>('/billing/checkout-session', {
         body: {
           billingInterval,
-          apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+          apiServiceLevel: ApiServiceLevelEnum.TEAM,
           isV2Dashboard: true,
         },
       }),
     onSuccess: (response, billingInterval) => {
       track(TelemetryEvent.BILLING_UPGRADE_INITIATED, {
         fromPlan: response.data.apiServiceLevel,
-        toPlan: ApiServiceLevelEnum.BUSINESS,
+        toPlan: ApiServiceLevelEnum.TEAM,
         billingInterval,
       });
       window.location.href = response.data.stripeCheckoutUrl;

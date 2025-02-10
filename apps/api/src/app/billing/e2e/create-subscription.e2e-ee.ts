@@ -5,8 +5,8 @@ import { ApiServiceLevelEnum } from '@novu/shared';
 // eslint-disable-next-line no-restricted-imports
 import {
   StripeBillingIntervalEnum,
-  StripeUsageTypeEnum,
   StripeSubscriptionStatusEnum,
+  StripeUsageTypeEnum,
 } from '@novu/ee-billing/src/stripe/types';
 
 describe('CreateSubscription #novu-v2', () => {
@@ -15,7 +15,7 @@ describe('CreateSubscription #novu-v2', () => {
     throw new Error('ee-billing does not exist');
   }
 
-  const { CreateSubscription, GetPrices, UpdateServiceLevel, CreateSubscriptionCommand } = eeBilling;
+  const { CreateSubscription, GetStripePlanPriceUseCase, UpdateServiceLevel, CreateSubscriptionCommand } = eeBilling;
 
   const stripeStub = {
     subscriptions: {
@@ -53,7 +53,7 @@ describe('CreateSubscription #novu-v2', () => {
   };
 
   beforeEach(() => {
-    getPricesStub = sinon.stub(GetPrices.prototype, 'execute').resolves({
+    getPricesStub = sinon.stub(GetStripePlanPriceUseCase.prototype, 'execute').resolves({
       metered: [
         {
           id: 'price_id_notifications',
@@ -100,7 +100,7 @@ describe('CreateSubscription #novu-v2', () => {
         await useCase.execute(
           CreateSubscriptionCommand.create({
             customer: mockCustomerNoSubscriptions as any,
-            apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+            apiServiceLevel: ApiServiceLevelEnum.TEAM,
             billingInterval: StripeBillingIntervalEnum.MONTH,
           })
         );
@@ -131,7 +131,7 @@ describe('CreateSubscription #novu-v2', () => {
         await useCase.execute(
           CreateSubscriptionCommand.create({
             customer: mockCustomerNoSubscriptions as any,
-            apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+            apiServiceLevel: ApiServiceLevelEnum.TEAM,
             billingInterval: StripeBillingIntervalEnum.MONTH,
             trialPeriodDays: 10,
           })
@@ -171,7 +171,7 @@ describe('CreateSubscription #novu-v2', () => {
         await useCase.execute(
           CreateSubscriptionCommand.create({
             customer: mockCustomerNoSubscriptions as any,
-            apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+            apiServiceLevel: ApiServiceLevelEnum.TEAM,
             billingInterval: StripeBillingIntervalEnum.YEAR,
           })
         );
@@ -212,7 +212,7 @@ describe('CreateSubscription #novu-v2', () => {
         await useCase.execute(
           CreateSubscriptionCommand.create({
             customer: mockCustomerNoSubscriptions as any,
-            apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+            apiServiceLevel: ApiServiceLevelEnum.TEAM,
             billingInterval: StripeBillingIntervalEnum.YEAR,
             trialPeriodDays: 10,
           })
@@ -299,12 +299,12 @@ describe('CreateSubscription #novu-v2', () => {
         CreateSubscriptionCommand.create({
           customer: mockCustomerBase as any,
           billingInterval: StripeBillingIntervalEnum.MONTH,
-          apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+          apiServiceLevel: ApiServiceLevelEnum.TEAM,
         })
       );
 
       expect(updateServiceLevelStub.lastCall.args).to.deep.equal([
-        { organizationId: 'organization_id', apiServiceLevel: ApiServiceLevelEnum.BUSINESS, isTrial: false },
+        { organizationId: 'organization_id', apiServiceLevel: ApiServiceLevelEnum.TEAM, isTrial: false },
       ]);
     });
   });

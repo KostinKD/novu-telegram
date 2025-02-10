@@ -73,14 +73,14 @@ describe('Create checkout session #novu-v2', async () => {
       organizationId: 'organization_id',
       userId: 'user_id',
       billingInterval: StripeBillingIntervalEnum.MONTH,
-      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+      apiServiceLevel: ApiServiceLevelEnum.TEAM,
     });
 
     expect(checkoutCreateStub.lastCall.args.at(0)).to.deep.equal({
       ...checkoutSessionCreateParamsMock,
       line_items: [{ price: 'licensed_price_id_1', quantity: 1 }, { price: 'metered_price_id_1' }],
       metadata: {
-        apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+        apiServiceLevel: ApiServiceLevelEnum.TEAM,
         billingInterval: StripeBillingIntervalEnum.MONTH,
       },
     });
@@ -95,14 +95,14 @@ describe('Create checkout session #novu-v2', async () => {
       organizationId: 'organization_id',
       userId: 'user_id',
       billingInterval: StripeBillingIntervalEnum.YEAR,
-      apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+      apiServiceLevel: ApiServiceLevelEnum.TEAM,
     });
 
     expect(checkoutCreateStub.lastCall.args.at(0)).to.deep.equal({
       ...checkoutSessionCreateParamsMock,
       line_items: [{ price: 'licensed_price_id_1', quantity: 1 }],
       metadata: {
-        apiServiceLevel: ApiServiceLevelEnum.BUSINESS,
+        apiServiceLevel: ApiServiceLevelEnum.TEAM,
         billingInterval: StripeBillingIntervalEnum.YEAR,
       },
     });

@@ -1,3 +1,4 @@
+import { migrateServiceLevel } from '@novu/shared';
 import { IPartnerConfiguration, OrganizationDBModel, OrganizationEntity } from './organization.entity';
 import { BaseRepository } from '../base-repository';
 import { Organization } from './organization.schema';
@@ -19,6 +20,12 @@ export class CommunityOrganizationRepository
     if (!data) return null;
 
     return this.mapEntity(data.toObject());
+  }
+
+  protected mapEntity<TData>(data: TData): TData extends null ? null : OrganizationEntity {
+    const mapEntity = super.mapEntity(data);
+
+    return { ...mapEntity, apiServiceLevel: migrateServiceLevel(mapEntity?.apiServiceLevel) };
   }
 
   async findUserActiveOrganizations(userId: string): Promise<OrganizationEntity[]> {
